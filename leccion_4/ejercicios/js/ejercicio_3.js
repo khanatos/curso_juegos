@@ -50,12 +50,18 @@ main = function() {
 
 	// AQUI EMPIEZA TU CODIGO
 
-
+		
+	for(i=0; i<16; i++)
+	{
+		frames[i] = new Image();	
+		frames[i].onload = onImageLoad(i);
+		frames[i].src = imagenes[i];
+	}
     // AQUI TERMINA TU CODIGO
 };
 
-var onImageLoad = function(){
-	console.log("Imagen cargada.");
+var onImageLoad = function(_frame){
+	console.log("Imagen cargada" + _frame + ".");
 };
 
 var animate = function() {
@@ -65,9 +71,18 @@ var animate = function() {
 	// 2. Cambia el contador al siguiente frame
 
 	// AQUI EMPIEZA TU CODIGO
-
+	context.drawImage(frames[counter],100,10);
+	if(counter < 15)
+		{
+			counter++;
+		}
+	else
+		{
+			counter=0;
+		}
+		
 
 	// AQUI TERMINA TU CODIGO
 }
-
+setInterval(animate, 100);
 window.onload = main;
